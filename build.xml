@@ -1,0 +1,44 @@
+<project name="SortingApp" default="build" basedir=".">
+    <!-- Определяем свойства -->
+    <property name="src.dir" value="src" />
+    <property name="build.dir" value="build" />
+    <property name="classes.dir" value="${build.dir}/classes" />
+    <property name="jar.dir" value="${build.dir}/jar" />
+    <property name="main-class" value="Main_WindowsApp" />
+
+    <!-- Очистка предыдущих сборок -->
+    <target name="clean">
+        <delete dir="${build.dir}" />
+    </target>
+
+    <!-- Создание директорий для сборки -->
+    <target name="init">
+        <mkdir dir="${build.dir}" />
+        <mkdir dir="${classes.dir}" />
+        <mkdir dir="${jar.dir}" />
+    </target>
+
+    <!-- Компиляция исходного кода -->
+    <target name="compile" depends="init">
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" includeantruntime="false" />
+    </target>
+
+    <!-- Создание JAR-файла -->
+    <target name="jar" depends="compile">
+        <jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${classes.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="${main-class}" />
+            </manifest>
+        </jar>
+    </target>
+
+    <!-- Сборка проекта (по умолчанию) -->
+    <target name="build" depends="jar">
+        <echo message="Проект успешно собран!" />
+    </target>
+
+    <!-- Запуск приложения -->
+    <target name="run" depends="jar">
+        <java jar="${jar.dir}/${ant.project.name}.jar" fork="true" />
+    </target>
+</project>
