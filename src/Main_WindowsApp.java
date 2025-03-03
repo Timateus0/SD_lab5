@@ -12,6 +12,9 @@ public class Main_WindowsApp extends JFrame {
     private JButton introSortButton;
 
     public Main_WindowsApp() {
+    	
+    	double wwdasafa = 0;
+    	
         setTitle("Sorting App");
         setSize(500, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -19,7 +22,7 @@ public class Main_WindowsApp extends JFrame {
 
         // Input area
         inputArea = new JTextArea();
-        inputArea.setBorder(BorderFactory.createTitledBorder("Input Pairs (key:value, one per line)"));
+        inputArea.setBorder(BorderFactory.createTitledBorder("Input Pairs (key(int):value(str) , one per line)"));
         add(new JScrollPane(inputArea), BorderLayout.NORTH);
 
         // Output area
